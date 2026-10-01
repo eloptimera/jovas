@@ -24,15 +24,7 @@ const MASK = "radial-gradient(circle at 50% 50%, #000 58%, transparent 70%)";
  * Glasig cirkel med vertikala skivor och varumärket i mitten.
  * Rent dekorativ – texten finns i klartext på sidan, så allt döljs för skärmläsare.
  */
-export function GlasCirkel({
-  namn,
-  notiser,
-  className = "",
-}: {
-  namn: string;
-  notiser: readonly [string, string, string];
-  className?: string;
-}) {
+export function GlasCirkel({ namn, className = "" }: { namn: string; className?: string }) {
   return (
     <div aria-hidden="true" className={`aspect-square ${className}`}>
       <div className="absolute inset-0" style={{ maskImage: MASK, WebkitMaskImage: MASK }}>
@@ -61,15 +53,6 @@ export function GlasCirkel({
 
       <p className="font-wide absolute top-1/2 left-[56%] -translate-x-1/2 -translate-y-1/2 text-[clamp(1.5rem,3.4vw,3rem)] tracking-[0.08em] text-white uppercase drop-shadow-sm">
         {namn}
-      </p>
-      <p className="absolute top-[27%] left-[50%] max-w-[7rem] text-[0.7rem] leading-tight text-white/90 sm:text-xs">
-        {notiser[0]}
-      </p>
-      <p className="absolute top-[58%] left-[27%] max-w-[6rem] text-[0.7rem] leading-tight text-white/90 sm:text-xs">
-        {notiser[1]}
-      </p>
-      <p className="absolute right-[18%] bottom-[24%] max-w-[7rem] text-[0.7rem] leading-tight text-white/90 sm:text-xs">
-        {notiser[2]}
       </p>
     </div>
   );

@@ -62,54 +62,55 @@ function Start() {
   return (
     <>
       {/* Hero */}
-      <section className="hero-glow relative isolate px-3 py-4 sm:px-6 sm:py-8">
-        <div className="mx-auto grid max-w-[88rem] items-center gap-10 rounded-[2rem] bg-cream p-6 shadow-2xl shadow-brand-deep/30 sm:p-10 lg:min-h-[min(40rem,calc(100svh-9rem))] lg:grid-cols-[1fr_1.05fr] lg:gap-6 lg:p-14">
-          <div>
-            <h1 className="font-wide text-[clamp(1.5rem,2.9vw,2.6rem)] leading-[1.3] text-ink uppercase">
+      <section className="p-3 sm:px-6">
+        <div className="panel-brand relative isolate mx-auto max-w-[88rem] overflow-hidden rounded-[2rem]">
+          <GlasCirkel
+            namn={FORETAG.kortnamn}
+            className="pointer-events-none absolute top-1/2 -right-10 -z-10 hidden w-[42rem] -translate-y-1/2 lg:block"
+          />
+          <div className="px-6 py-16 sm:px-12 sm:py-24 lg:min-h-[min(41rem,calc(100svh-7rem))] lg:px-16 lg:py-28">
+            <p className="inline-flex rounded-full bg-white/15 px-4 py-1.5 text-xs font-bold tracking-[0.14em] uppercase">
+              {FORETAG.ort} · sedan {FORETAG.startar}
+            </p>
+            <h1 className="font-wide mt-6 max-w-3xl text-[clamp(1.25rem,4vw,3.4rem)] leading-[1.3] uppercase">
               Professionell lokalvård
-              <span className="font-display mt-5 block text-[clamp(1.05rem,1.5vw,1.3rem)] leading-snug font-normal tracking-normal text-muted-foreground normal-case">
+              <span className="font-display mt-5 block text-[clamp(1.05rem,1.6vw,1.4rem)] leading-snug font-normal tracking-normal text-white/90 normal-case">
                 för företag och fastigheter i {FORETAG.ort}
               </span>
             </h1>
-            <div className="mt-10 max-w-md space-y-3 text-[0.95rem] leading-relaxed text-ink/80">
-              <p>
-                Kontorsstädning, trapphusstädning och lokalvård för företag, fastighetsägare och
-                BRF:er.
-              </p>
-              <p>
-                Verksamma sedan {FORETAG.startar}, med kollektivavtal. Skicka en förfrågan så
-                återkommer vi med fri offert.
-              </p>
-            </div>
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <Link to="/offert" className="btn-base btn-dark">
+            <p className="mt-8 max-w-xl text-lg leading-relaxed text-white/90">
+              Kontorsstädning, trapphusstädning och lokalvård för företag, fastighetsägare och
+              BRF:er. Skicka en förfrågan så återkommer vi med fri offert.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Link to="/offert" className="btn-base btn-white">
                 Få fri offert
               </Link>
-              {FORETAG.telefon && (
-                <a
-                  href={`tel:${FORETAG.telefonLank}`}
-                  className="inline-flex min-h-11 items-center gap-2 text-sm font-bold text-ink underline decoration-brand decoration-2 underline-offset-4"
-                >
+              {FORETAG.telefon ? (
+                <a href={`tel:${FORETAG.telefonLank}`} className="btn-base btn-outline-white">
                   <Phone className="size-4" aria-hidden="true" />
                   {FORETAG.telefon}
                 </a>
+              ) : (
+                <Link to="/kontakt" className="btn-base btn-outline-white">
+                  Kontakta oss
+                </Link>
               )}
             </div>
-            <ul className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium text-ink/80">
+            <ul className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium text-white/85">
               {TRYGGHET.map((t) => (
                 <li key={t} className="flex items-center gap-2">
-                  <span className="size-1.5 rounded-full bg-brand" aria-hidden="true" />
+                  <span className="size-1.5 rounded-full bg-sun" aria-hidden="true" />
                   {t}
                 </li>
               ))}
             </ul>
-          </div>
 
-          <GlasCirkel
-            namn={FORETAG.kortnamn}
-            notiser={["Kollektivavtal", `Sedan ${FORETAG.startar}`, "Kontor & fastigheter"]}
-            className="relative mx-auto w-full max-w-[34rem] lg:max-w-none"
-          />
+            <GlasCirkel
+              namn={FORETAG.kortnamn}
+              className="pointer-events-none relative mx-auto mt-12 w-full max-w-[22rem] lg:hidden"
+            />
+          </div>
         </div>
       </section>
 
@@ -217,7 +218,6 @@ function Start() {
           <div className="panel-brand relative isolate mx-auto max-w-[88rem] overflow-hidden rounded-[2rem] px-6 py-16 sm:px-14 sm:py-24">
             <GlasCirkel
               namn={FORETAG.kortnamn}
-              notiser={["Kollektivavtal", `Sedan ${FORETAG.startar}`, "Kontor & fastigheter"]}
               className="pointer-events-none absolute top-1/2 -right-4 -z-10 hidden w-[28rem] -translate-y-1/2 opacity-80 lg:block"
             />
             <h2 className="font-wide max-w-2xl text-[clamp(1.5rem,3.4vw,2.8rem)] leading-[1.3] uppercase">

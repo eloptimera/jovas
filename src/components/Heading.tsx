@@ -44,7 +44,6 @@ export function PageHero({
       <div className="panel-brand relative isolate mx-auto max-w-[88rem] overflow-hidden rounded-[2rem]">
         <GlasCirkel
           namn={FORETAG.kortnamn}
-          notiser={["Kollektivavtal", `Sedan ${FORETAG.startar}`, "Kontor & fastigheter"]}
           className="pointer-events-none absolute top-1/2 -right-6 -z-10 hidden w-[32rem] -translate-y-1/2 opacity-80 lg:block"
         />
         <div className="px-6 py-16 sm:px-12 sm:py-24 lg:px-16">

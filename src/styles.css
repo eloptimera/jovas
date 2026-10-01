@@ -156,16 +156,6 @@
   letter-spacing: 0.02em;
 }
 
-/* Ytterkant runt hero-kortet: mjuka teal-ljus som i referensen */
-@utility hero-glow {
-  background-color: #1b9a86;
-  background-image:
-    radial-gradient(45% 70% at 0% 100%, #6fe0c6 0%, rgb(111 224 198 / 0) 70%),
-    radial-gradient(40% 60% at 100% 0%, #0a5a50 0%, rgb(10 90 80 / 0) 75%),
-    radial-gradient(35% 40% at 55% 105%, #b9f3e3 0%, rgb(185 243 227 / 0) 70%),
-    linear-gradient(135deg, #22a590 0%, #0d6e62 100%);
-}
-
 /* Ljusblå yta som tonas mjukt in och ut mot vitt – inga hårda kanter mellan sektioner. */
 @utility bg-fade-tint {
   background-image: linear-gradient(
