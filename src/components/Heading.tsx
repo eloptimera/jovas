@@ -1,5 +1,6 @@
 import type { ElementType, ReactNode } from "react";
-import { Bubblor, Sparkle } from "@/components/Brand";
+import { GlasCirkel } from "@/components/Brand";
+import { FORETAG } from "@/lib/foretag";
 
 export function Heading({
   as: Tag = "h2",
@@ -26,7 +27,7 @@ export function Mark({ children, nowrap = false }: { children: ReactNode; nowrap
   );
 }
 
-/** Blå sidhuvudspanel för undersidor. Ligger under den svävande menyn. */
+/** Sidhuvud för undersidor: teal panel med glasig cirkel. */
 export function PageHero({
   eyebrow,
   title,
@@ -39,15 +40,20 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="-mt-16 p-3">
-      <div className="panel-blue relative isolate overflow-hidden rounded-[2.25rem]">
-        <Bubblor className="pointer-events-none absolute -right-10 bottom-[-3rem] -z-10 hidden w-72 opacity-90 sm:block lg:right-10 lg:w-96" />
-        <Sparkle className="absolute top-40 right-[38%] -z-10 hidden size-6 text-sun lg:block" />
-        <div className="container-page max-w-6xl pt-36 pb-16 sm:pt-44 sm:pb-24">
-          <p className="inline-flex rounded-full bg-white/16 px-4 py-1.5 text-xs font-bold tracking-[0.14em] uppercase">
+    <section className="p-3 sm:px-6">
+      <div className="panel-brand relative isolate mx-auto max-w-[88rem] overflow-hidden rounded-[2rem]">
+        <GlasCirkel
+          namn={FORETAG.kortnamn}
+          notiser={["Kollektivavtal", `Sedan ${FORETAG.startar}`, "Kontor & fastigheter"]}
+          className="pointer-events-none absolute top-1/2 -right-6 -z-10 hidden w-[32rem] -translate-y-1/2 opacity-80 lg:block"
+        />
+        <div className="px-6 py-16 sm:px-12 sm:py-24 lg:px-16">
+          <p className="inline-flex rounded-full bg-white/15 px-4 py-1.5 text-xs font-bold tracking-[0.14em] uppercase">
             {eyebrow}
           </p>
-          <h1 className="mt-6 max-w-3xl text-[clamp(2.4rem,6vw,4.75rem)]">{title}</h1>
+          <h1 className="font-wide mt-6 max-w-3xl text-[clamp(1.5rem,3.6vw,3rem)] leading-[1.3] uppercase">
+            {title}
+          </h1>
           {intro && <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/90">{intro}</p>}
           {children && <div className="mt-8 flex flex-wrap gap-3">{children}</div>}
         </div>

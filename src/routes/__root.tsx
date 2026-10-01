@@ -24,7 +24,7 @@ function NotFoundComponent() {
           Sidan du letar efter finns inte eller har flyttats.
         </p>
         <div className="mt-6">
-          <Link to="/" className="btn-base btn-blue">
+          <Link to="/" className="btn-base btn-dark">
             Till startsidan
           </Link>
         </div>
@@ -55,7 +55,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
               router.invalidate();
               reset();
             }}
-            className="btn-base btn-blue"
+            className="btn-base btn-dark"
           >
             Försök igen
           </button>

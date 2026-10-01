@@ -78,7 +78,7 @@ function Tjanster() {
                     </li>
                   ))}
                 </ul>
-                <Link to="/offert" className="btn-base btn-blue mt-6">
+                <Link to="/offert" className="btn-base btn-dark mt-6">
                   Begär offert på {t.titel.toLowerCase()}
                 </Link>
               </div>

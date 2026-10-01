@@ -9,11 +9,11 @@ const LANK =
 
 export function Footer() {
   return (
-    <footer className="p-3 pt-0">
-      <div className="overflow-hidden rounded-[2.25rem] bg-ink text-white">
+    <footer className="p-3 pt-0 sm:px-6">
+      <div className="mx-auto max-w-[88rem] overflow-hidden rounded-[2rem] bg-ink text-white">
         <div className="container-page grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
-            <Logo ljus className="text-4xl" />
+            <Logo ljus className="text-2xl" />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/75">
               Lokalvård för företag och fastigheter i {FORETAG.omrade}. Verksamma sedan{" "}
               {FORETAG.startar}, med kollektivavtal.

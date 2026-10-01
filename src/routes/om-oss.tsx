@@ -124,7 +124,7 @@ function OmOss() {
 
       <section className="container-page py-20 sm:py-28">
         <Reveal className="flex flex-wrap justify-center gap-3">
-          <Link to="/offert" className="btn-base btn-blue px-9 py-4 text-base">
+          <Link to="/offert" className="btn-base btn-dark px-9 py-4 text-base">
             Få fri offert
           </Link>
           <Link to="/kontakt" className="btn-base btn-outline px-9 py-4 text-base">

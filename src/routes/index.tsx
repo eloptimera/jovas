@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, BadgeCheck, Handshake, Phone, Users } from "lucide-react";
-import { Bubblor, Sparkle } from "@/components/Brand";
+import { GlasCirkel } from "@/components/Brand";
 import { Heading, Mark } from "@/components/Heading";
 import { Reveal } from "@/components/Reveal";
 import { FORETAG } from "@/lib/foretag";
@@ -32,11 +32,7 @@ export const Route = createFileRoute("/")({
   component: Start,
 });
 
-const TRYGGHET = [
-  { ikon: Handshake, text: "Kollektivavtal" },
-  { ikon: BadgeCheck, text: "Verksamma sedan 1995" },
-  { ikon: BadgeCheck, text: "F-skatt" },
-] as const;
+const TRYGGHET = ["Kollektivavtal", "Verksamma sedan 1995", "F-skatt"] as const;
 
 const FORDELAR = [
   {
@@ -66,68 +62,54 @@ function Start() {
   return (
     <>
       {/* Hero */}
-      <section className="-mt-16 p-3">
-        <div className="panel-blue relative isolate flex flex-col overflow-hidden rounded-[2.25rem] pt-24 pb-8 sm:pt-24 lg:min-h-[calc(100svh-1.5rem)] lg:pb-6">
-          <div className="container-page flex max-w-[88rem] flex-1 flex-col">
-            {/* Jättestor ordbild */}
-            <div
-              aria-hidden="true"
-              className="mx-auto w-fit text-center font-display text-[min(27vw,23rem,27svh)] leading-[0.82] text-white select-none"
-            >
-              jovos
+      <section className="hero-glow relative isolate px-3 py-4 sm:px-6 sm:py-8">
+        <div className="mx-auto grid max-w-[88rem] items-center gap-10 rounded-[2rem] bg-cream p-6 shadow-2xl shadow-brand-deep/30 sm:p-10 lg:min-h-[min(40rem,calc(100svh-9rem))] lg:grid-cols-[1fr_1.05fr] lg:gap-6 lg:p-14">
+          <div>
+            <h1 className="font-wide text-[clamp(1.5rem,2.9vw,2.6rem)] leading-[1.3] text-ink uppercase">
+              Professionell lokalvård
+              <span className="font-display mt-5 block text-[clamp(1.05rem,1.5vw,1.3rem)] leading-snug font-normal tracking-normal text-muted-foreground normal-case">
+                för företag och fastigheter i {FORETAG.ort}
+              </span>
+            </h1>
+            <div className="mt-10 max-w-md space-y-3 text-[0.95rem] leading-relaxed text-ink/80">
+              <p>
+                Kontorsstädning, trapphusstädning och lokalvård för företag, fastighetsägare och
+                BRF:er.
+              </p>
+              <p>
+                Verksamma sedan {FORETAG.startar}, med kollektivavtal. Skicka en förfrågan så
+                återkommer vi med fri offert.
+              </p>
             </div>
-
-            <div className="relative z-20 mt-8 grid gap-8 lg:mt-auto lg:grid-cols-[1fr_auto] lg:items-end lg:pt-8">
-              <div>
-                <h1 className="max-w-lg text-[clamp(1.9rem,4.4vw,2.9rem)]">
-                  Professionell lokalvård för företag och fastigheter i <Mark>Göteborg</Mark>
-                </h1>
-                <p className="mt-4 max-w-md leading-relaxed text-white/90">
-                  Kontorsstädning, trapphusstädning och lokalvård sedan {FORETAG.startar}. Skicka en
-                  förfrågan så återkommer vi med fri offert.
-                </p>
-                <div className="mt-7 flex flex-wrap gap-3">
-                  <Link to="/offert" className="btn-base btn-white">
-                    Få fri offert
-                  </Link>
-                  {FORETAG.telefon && (
-                    <a href={`tel:${FORETAG.telefonLank}`} className="btn-base btn-outline-white">
-                      <Phone className="size-4" aria-hidden="true" />
-                      {FORETAG.telefon}
-                    </a>
-                  )}
-                </div>
-                <ul className="mt-7 flex flex-wrap gap-2">
-                  {TRYGGHET.map(({ ikon: Ikon, text }) => (
-                    <li
-                      key={text}
-                      className="glass flex items-center gap-2 rounded-full py-2 pr-4 pl-3 text-sm font-bold"
-                    >
-                      <Ikon className="size-4 text-sun" aria-hidden="true" />
-                      {text}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="w-full rounded-[1.75rem] bg-white p-5 text-ink shadow-2xl shadow-brand-deep/40 lg:w-[22rem]">
-                <p className="font-display text-xl text-brand">Få fri offert</p>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                  Berätta vad du behöver hjälp med så återkommer vi med ett förslag och pris.
-                </p>
-                <Link
-                  to="/offert"
-                  className="btn-base btn-blue mt-4 w-full justify-between py-2 pr-2 pl-5"
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <Link to="/offert" className="btn-base btn-dark">
+                Få fri offert
+              </Link>
+              {FORETAG.telefon && (
+                <a
+                  href={`tel:${FORETAG.telefonLank}`}
+                  className="inline-flex min-h-11 items-center gap-2 text-sm font-bold text-ink underline decoration-brand decoration-2 underline-offset-4"
                 >
-                  Begär offert
-                  <span className="grid size-9 place-items-center rounded-full bg-white text-brand">
-                    <ArrowUpRight className="size-4" aria-hidden="true" />
-                  </span>
-                </Link>
-              </div>
+                  <Phone className="size-4" aria-hidden="true" />
+                  {FORETAG.telefon}
+                </a>
+              )}
             </div>
+            <ul className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium text-ink/80">
+              {TRYGGHET.map((t) => (
+                <li key={t} className="flex items-center gap-2">
+                  <span className="size-1.5 rounded-full bg-brand" aria-hidden="true" />
+                  {t}
+                </li>
+              ))}
+            </ul>
           </div>
-          <Sparkle className="pointer-events-none absolute top-24 left-[8%] -z-10 hidden size-5 text-white/70 lg:block" />
+
+          <GlasCirkel
+            namn={FORETAG.kortnamn}
+            notiser={["Kollektivavtal", `Sedan ${FORETAG.startar}`, "Kontor & fastigheter"]}
+            className="relative mx-auto w-full max-w-[34rem] lg:max-w-none"
+          />
         </div>
       </section>
 
@@ -217,7 +199,7 @@ function Start() {
             </div>
             <div className="rounded-[2rem] bg-ink p-6 text-white">
               <dt className="text-xs font-bold tracking-[0.14em] text-sun uppercase">Säte</dt>
-              <dd className="mt-3 font-display text-3xl sm:text-4xl">{FORETAG.ort}</dd>
+              <dd className="mt-3 font-display text-2xl sm:text-4xl">{FORETAG.ort}</dd>
             </div>
             <div className="col-span-2 rounded-[2rem] bg-tint p-6">
               <dt className="text-xs font-bold tracking-[0.14em] text-brand uppercase">
@@ -230,12 +212,16 @@ function Start() {
       </section>
 
       {/* Avslutande CTA */}
-      <section className="p-3 pt-0">
+      <section className="p-3 pt-0 sm:px-6">
         <Reveal>
-          <div className="panel-blue relative isolate overflow-hidden rounded-[2.25rem] px-6 py-16 sm:px-14 sm:py-24">
-            <Bubblor className="pointer-events-none absolute -right-8 -bottom-10 -z-10 hidden w-72 sm:block lg:right-16 lg:w-96" />
-            <h2 className="max-w-2xl text-[clamp(2.2rem,5vw,4rem)]">
-              Redo för <Mark>skinande rena</Mark> lokaler?
+          <div className="panel-brand relative isolate mx-auto max-w-[88rem] overflow-hidden rounded-[2rem] px-6 py-16 sm:px-14 sm:py-24">
+            <GlasCirkel
+              namn={FORETAG.kortnamn}
+              notiser={["Kollektivavtal", `Sedan ${FORETAG.startar}`, "Kontor & fastigheter"]}
+              className="pointer-events-none absolute top-1/2 -right-4 -z-10 hidden w-[28rem] -translate-y-1/2 opacity-80 lg:block"
+            />
+            <h2 className="font-wide max-w-2xl text-[clamp(1.5rem,3.4vw,2.8rem)] leading-[1.3] uppercase">
+              Redo för <Mark>rena</Mark> lokaler?
             </h2>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link to="/offert" className="btn-base btn-white">

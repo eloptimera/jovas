@@ -229,7 +229,7 @@ function Offert() {
             )}
 
             <div>
-              <button type="submit" disabled={skickar} className="btn-base btn-blue">
+              <button type="submit" disabled={skickar} className="btn-base btn-dark">
                 {skickar ? "Skickar …" : "Skicka förfrågan"}
               </button>
             </div>
