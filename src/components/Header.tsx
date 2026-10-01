@@ -7,7 +7,6 @@ import { FORETAG } from "@/lib/foretag";
 const VANSTER = [
   { to: "/", label: "Hem" },
   { to: "/tjanster", label: "Tjänster" },
-  { to: "/rut", label: "RUT-avdrag" },
 ] as const;
 
 const HOGER = [

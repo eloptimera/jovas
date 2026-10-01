@@ -14,7 +14,6 @@ import { Route as IntegritetspolicyRouteImport } from './routes/integritetspolic
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as OffertRouteImport } from './routes/offert'
 import { Route as OmOssRouteImport } from './routes/om-oss'
-import { Route as RutRouteImport } from './routes/rut'
 import { Route as TjansterRouteImport } from './routes/tjanster'
 
 const IndexRoute = IndexRouteImport.update({
@@ -42,11 +41,6 @@ const OmOssRoute = OmOssRouteImport.update({
   path: '/om-oss',
   getParentRoute: () => rootRouteImport,
 } as any)
-const RutRoute = RutRouteImport.update({
-  id: '/rut',
-  path: '/rut',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const TjansterRoute = TjansterRouteImport.update({
   id: '/tjanster',
   path: '/tjanster',
@@ -59,7 +53,6 @@ export interface FileRoutesByFullPath {
   '/kontakt': typeof KontaktRoute
   '/offert': typeof OffertRoute
   '/om-oss': typeof OmOssRoute
-  '/rut': typeof RutRoute
   '/tjanster': typeof TjansterRoute
 }
 export interface FileRoutesByTo {
@@ -68,7 +61,6 @@ export interface FileRoutesByTo {
   '/kontakt': typeof KontaktRoute
   '/offert': typeof OffertRoute
   '/om-oss': typeof OmOssRoute
-  '/rut': typeof RutRoute
   '/tjanster': typeof TjansterRoute
 }
 export interface FileRoutesById {
@@ -78,7 +70,6 @@ export interface FileRoutesById {
   '/kontakt': typeof KontaktRoute
   '/offert': typeof OffertRoute
   '/om-oss': typeof OmOssRoute
-  '/rut': typeof RutRoute
   '/tjanster': typeof TjansterRoute
 }
 export interface FileRouteTypes {
@@ -89,7 +80,6 @@ export interface FileRouteTypes {
     | '/kontakt'
     | '/offert'
     | '/om-oss'
-    | '/rut'
     | '/tjanster'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -98,7 +88,6 @@ export interface FileRouteTypes {
     | '/kontakt'
     | '/offert'
     | '/om-oss'
-    | '/rut'
     | '/tjanster'
   id:
     | '__root__'
@@ -107,7 +96,6 @@ export interface FileRouteTypes {
     | '/kontakt'
     | '/offert'
     | '/om-oss'
-    | '/rut'
     | '/tjanster'
   fileRoutesById: FileRoutesById
 }
@@ -117,7 +105,6 @@ export interface RootRouteChildren {
   KontaktRoute: typeof KontaktRoute
   OffertRoute: typeof OffertRoute
   OmOssRoute: typeof OmOssRoute
-  RutRoute: typeof RutRoute
   TjansterRoute: typeof TjansterRoute
 }
 
@@ -158,13 +145,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OmOssRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/rut': {
-      id: '/rut'
-      path: '/rut'
-      fullPath: '/rut'
-      preLoaderRoute: typeof RutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/tjanster': {
       id: '/tjanster'
       path: '/tjanster'
@@ -181,7 +161,6 @@ const rootRouteChildren: RootRouteChildren = {
   KontaktRoute: KontaktRoute,
   OffertRoute: OffertRoute,
   OmOssRoute: OmOssRoute,
-  RutRoute: RutRoute,
   TjansterRoute: TjansterRoute,
 }
 export const routeTree = rootRouteImport

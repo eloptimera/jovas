@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Heart, ShieldCheck, Sparkles } from "lucide-react";
+import { BadgeCheck, Handshake, Users } from "lucide-react";
 import { Heading, Mark, PageHero } from "@/components/Heading";
 import { Reveal } from "@/components/Reveal";
 import { FORETAG } from "@/lib/foretag";
@@ -7,13 +7,13 @@ import { FORETAG } from "@/lib/foretag";
 export const Route = createFileRoute("/om-oss")({
   head: () => ({
     meta: [
-      { title: "Om oss – Zanea AB, städfirma i Bromma" },
+      { title: "Om oss – Jovos Transport AB, städfirma i Göteborg" },
       {
         name: "description",
         content:
-          "Zanea AB är ett städ- och lokalvårdsbolag i Bromma som arbetar i Stockholm och Bromma. Möt teamet och läs om hur vi arbetar.",
+          "Jovos Transport AB är ett lokalvårdsbolag i Göteborg, verksamt sedan 1995, med kollektivavtal. Möt ledningen och läs om hur vi arbetar.",
       },
-      { property: "og:title", content: "Om oss – Zanea AB" },
+      { property: "og:title", content: "Om oss – Jovos Transport AB" },
       { property: "og:url", content: "/om-oss" },
     ],
     links: [{ rel: "canonical", href: "/om-oss" }],
@@ -23,21 +23,21 @@ export const Route = createFileRoute("/om-oss")({
 
 const VARDERINGAR = [
   {
-    ikon: Heart,
-    titel: "Trygghet",
-    text: "Du ska känna dig trygg med den som städar hos dig. Därför har vi ansvarsförsäkring och RUT-avdrag direkt på fakturan.",
+    ikon: Handshake,
+    titel: "Kollektivavtal",
+    text: "Vi har kollektivavtal (Almega Serviceentreprenad). Det visar att vi är en seriös arbetsgivare med schyssta villkor.",
     stil: "bg-brand text-white",
   },
   {
-    ikon: Sparkles,
-    titel: "Noggrannhet",
-    text: "Vi städar efter dina önskemål och tar oss tid för detaljerna, från hemmet till kontoret.",
+    ikon: BadgeCheck,
+    titel: "Lång erfarenhet",
+    text: `Verksamma sedan ${FORETAG.startar}. Över 30 år i branschen ger stabilitet och trygghet för dig som kund.`,
     stil: "bg-ink text-white",
   },
   {
-    ikon: ShieldCheck,
-    titel: "Nöjd-kund-garanti",
-    text: "Är du inte nöjd ska du säga till. Vi vill att varje uppdrag ska kännas värt det.",
+    ikon: Users,
+    titel: "Ett stabilt team",
+    text: `Vi är ${FORETAG.anstallda} anställda och har kapacitet för både mindre och större städuppdrag.`,
     stil: "bg-tint text-ink",
   },
 ] as const;
@@ -47,8 +47,9 @@ const FAKTA = [
   { rubrik: "Organisationsnummer", varde: FORETAG.orgnr },
   { rubrik: "Verksamma sedan", varde: String(FORETAG.startar) },
   { rubrik: "Bransch", varde: "Lokalvård & städservice" },
-  { rubrik: "Säte", varde: FORETAG.adress },
-  { rubrik: "Arbetsområde", varde: FORETAG.omrade },
+  { rubrik: "Skatt", varde: "Registrerad för F-skatt och moms" },
+  { rubrik: "Kollektivavtal", varde: "Almega Serviceentreprenad" },
+  { rubrik: "Adress", varde: FORETAG.adress },
 ] as const;
 
 const initialer = (namn: string) =>
@@ -65,10 +66,10 @@ function OmOss() {
         eyebrow="Om oss"
         title={
           <>
-            Ett lokalt städteam i <Mark>Bromma</Mark>
+            Göteborgs städfirma sedan <Mark>{FORETAG.startar}</Mark>
           </>
         }
-        intro={`${FORETAG.namn} är ett städ- och lokalvårdsbolag med säte i ${FORETAG.ort}. Vi hjälper privatpersoner och företag i ${FORETAG.omrade}.`}
+        intro={`${FORETAG.namn} är ett lokalvårdsbolag med säte i ${FORETAG.ort}. Vi hjälper företag, fastighetsägare, BRF:er och organisationer med kontorsstädning, fastighetsstädning och lokalvård.`}
       />
 
       <section className="container-page grid gap-4 py-20 md:grid-cols-3 sm:py-28">
@@ -89,19 +90,19 @@ function OmOss() {
         <div className="container-page grid gap-12 lg:grid-cols-2 lg:gap-20">
           <Reveal>
             <p className="eyebrow">Teamet</p>
-            <Heading className="mt-4 text-4xl sm:text-5xl">Människorna bakom Zanea</Heading>
+            <Heading className="mt-4 text-4xl sm:text-5xl">Ledningen</Heading>
             <ul className="mt-8 space-y-3">
               {FORETAG.personer.map((p) => (
-                <li key={p} className="flex items-center gap-4 rounded-3xl bg-white p-4">
+                <li key={p.namn} className="flex items-center gap-4 rounded-3xl bg-white p-4">
                   <span
                     aria-hidden="true"
                     className="grid size-14 shrink-0 place-items-center rounded-full bg-brand font-display text-xl text-white"
                   >
-                    {initialer(p)}
+                    {initialer(p.namn)}
                   </span>
                   <span>
-                    <span className="block font-bold text-ink">{p}</span>
-                    <span className="text-sm text-muted-foreground">{FORETAG.namn}</span>
+                    <span className="block font-bold text-ink">{p.namn}</span>
+                    <span className="text-sm text-muted-foreground">{p.roll}</span>
                   </span>
                 </li>
               ))}

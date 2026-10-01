@@ -7,13 +7,13 @@ import { TJANSTER } from "@/lib/tjanster";
 export const Route = createFileRoute("/tjanster")({
   head: () => ({
     meta: [
-      { title: "Städtjänster i Stockholm & Bromma – Zanea AB" },
+      { title: "Lokalvård i Göteborg – Jovos Transport AB" },
       {
         name: "description",
         content:
-          "Hemstädning, flytt- och storstädning, företags- och kontorsstädning samt bygg- och feststädning i Stockholm och Bromma. Fri offert.",
+          "Kontorsstädning, fastighetsstädning och lokalvård för företag, fastighetsägare och BRF:er i Göteborg. Fri offert.",
       },
-      { property: "og:title", content: "Städtjänster – Zanea AB" },
+      { property: "og:title", content: "Lokalvård – Jovos Transport AB" },
       { property: "og:url", content: "/tjanster" },
     ],
     links: [{ rel: "canonical", href: "/tjanster" }],
@@ -28,16 +28,16 @@ function Tjanster() {
         eyebrow="Tjänster"
         title={
           <>
-            Städning som passar <Mark>ditt behov</Mark>
+            Lokalvård som passar <Mark>din verksamhet</Mark>
           </>
         }
-        intro="Från regelbunden hemstädning till företagslokaler och byggstädning – i Stockholm och Bromma."
+        intro="Kontorsstädning, trapphusstädning och lokalvård för företag, fastighetsägare och BRF:er i Göteborg."
       >
         <Link to="/offert" className="btn-base btn-white">
           Få fri offert
         </Link>
-        <Link to="/rut" className="btn-base btn-outline-white">
-          Räkna med RUT
+        <Link to="/kontakt" className="btn-base btn-outline-white">
+          Kontakta oss
         </Link>
       </PageHero>
 
@@ -61,11 +61,6 @@ function Tjanster() {
                 <p className="mt-4 max-w-md text-lg leading-relaxed text-muted-foreground">
                   {t.kort}
                 </p>
-                {t.rut && (
-                  <p className="mt-5 inline-flex rounded-full bg-sun px-4 py-1.5 text-sm font-bold text-ink">
-                    RUT-avdrag för privatpersoner
-                  </p>
-                )}
               </div>
               <div>
                 <ul className="space-y-3">

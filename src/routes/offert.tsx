@@ -8,13 +8,13 @@ import { skickaOffert } from "@/lib/formular";
 export const Route = createFileRoute("/offert")({
   head: () => ({
     meta: [
-      { title: "Få fri offert – Zanea AB" },
+      { title: "Få fri offert – Jovos Transport AB" },
       {
         name: "description",
         content:
-          "Berätta vad du behöver hjälp med och få en fri offert på städning i Stockholm och Bromma från Zanea AB.",
+          "Berätta vad du behöver hjälp med och få en fri offert på kontors-, fastighets- och lokalvård i Göteborg från Jovos Transport AB.",
       },
-      { property: "og:title", content: "Få fri offert – Zanea AB" },
+      { property: "og:title", content: "Få fri offert – Jovos Transport AB" },
       {
         property: "og:description",
         content: "Berätta vad du behöver hjälp med och få en fri offert.",
@@ -26,13 +26,7 @@ export const Route = createFileRoute("/offert")({
   component: Offert,
 });
 
-const UPPDRAGSTYPER = [
-  "Hemstädning",
-  "Flytt- & storstädning",
-  "Företags- & kontorsstädning",
-  "Bygg- & feststädning",
-  "Annat",
-];
+const UPPDRAGSTYPER = ["Kontorsstädning", "Fastighetsstädning", "Lokalvård", "Annat"];
 
 function Offert() {
   const [typer, setTyper] = useState<string[]>([]);
@@ -195,7 +189,7 @@ function Offert() {
                 name="meddelande"
                 rows={5}
                 className="field mt-2"
-                placeholder="Typ av bostad eller lokal, antal rum, önskad frekvens, särskilda önskemål …"
+                placeholder="Typ av lokal eller fastighet, antal våningar/trapphus, önskad frekvens, särskilda önskemål …"
               />
             </div>
 

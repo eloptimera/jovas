@@ -17,7 +17,7 @@ export function Sparkle({
   );
 }
 
-/** Ordbild: "zanea" med glitter som prick. */
+/** Ordbild: "jovos" med glitter som prick. */
 export function Logo({ ljus = false, className = "" }: { ljus?: boolean; className?: string }) {
   return (
     <span
@@ -25,7 +25,7 @@ export function Logo({ ljus = false, className = "" }: { ljus?: boolean; classNa
         ljus ? "text-white" : "text-brand"
       } ${className}`}
     >
-      <span>zanea</span>
+      <span>jovos</span>
       <Sparkle className="mb-3 size-3.5 text-sun" />
       <span className="sr-only">{FORETAG.namn}</span>
     </span>

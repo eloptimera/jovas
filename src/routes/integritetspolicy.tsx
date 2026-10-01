@@ -5,13 +5,13 @@ import { FORETAG } from "@/lib/foretag";
 export const Route = createFileRoute("/integritetspolicy")({
   head: () => ({
     meta: [
-      { title: "Integritetspolicy – Zanea AB" },
+      { title: "Integritetspolicy – Jovos Transport AB" },
       {
         name: "description",
         content:
-          "Så behandlar Zanea AB dina personuppgifter när du kontaktar oss eller begär offert.",
+          "Så behandlar Jovos Transport AB dina personuppgifter när du kontaktar oss eller begär offert.",
       },
-      { property: "og:title", content: "Integritetspolicy – Zanea AB" },
+      { property: "og:title", content: "Integritetspolicy – Jovos Transport AB" },
       { property: "og:url", content: "/integritetspolicy" },
     ],
     links: [{ rel: "canonical", href: "/integritetspolicy" }],
@@ -59,10 +59,8 @@ function Integritetspolicy() {
               e-post, telefonnummer och ditt meddelande.
             </li>
             <li>
-              <strong className="font-medium text-foreground">
-                Offertförfrågan och RUT-kalkylatorn:
-              </strong>{" "}
-              namn, telefonnummer, e-post, adress, uppgifter om uppdraget (till exempel yta, typ av
+              <strong className="font-medium text-foreground">Offertförfrågan:</strong> namn,
+              telefonnummer, e-post, adress, uppgifter om uppdraget (till exempel yta, typ av
               städning och önskat startdatum) och ditt meddelande.
             </li>
           </ul>

@@ -9,16 +9,16 @@ import { skickaKontakt } from "@/lib/formular";
 export const Route = createFileRoute("/kontakt")({
   head: () => ({
     meta: [
-      { title: "Kontakt – Zanea AB i Bromma" },
+      { title: "Kontakt – Jovos Transport AB i Göteborg" },
       {
         name: "description",
         content:
-          "Kontakta Zanea AB i Bromma. Skicka ett meddelande, se adress och kontaktuppgifter.",
+          "Kontakta Jovos Transport AB i Göteborg. Skicka ett meddelande, se adress och kontaktuppgifter.",
       },
-      { property: "og:title", content: "Kontakt – Zanea AB" },
+      { property: "og:title", content: "Kontakt – Jovos Transport AB" },
       {
         property: "og:description",
-        content: "Kontaktuppgifter till Zanea AB i Bromma.",
+        content: "Kontaktuppgifter till Jovos Transport AB i Göteborg.",
       },
       { property: "og:url", content: "/kontakt" },
     ],

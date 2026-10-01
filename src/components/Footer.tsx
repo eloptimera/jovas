@@ -15,7 +15,8 @@ export function Footer() {
           <div>
             <Logo ljus className="text-4xl" />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/75">
-              Lokalvård och hemstädning i {FORETAG.omrade}. RUT-avdrag direkt på fakturan.
+              Lokalvård för företag och fastigheter i {FORETAG.omrade}. Verksamma sedan{" "}
+              {FORETAG.startar}, med kollektivavtal.
             </p>
           </div>
 
@@ -35,11 +36,6 @@ export function Footer() {
           <div>
             <p className="text-xs font-bold tracking-[0.14em] text-sun uppercase">Sidor</p>
             <ul className="mt-4 space-y-2.5 text-sm text-white/85">
-              <li>
-                <Link to="/rut" className={LANK}>
-                  RUT-avdrag
-                </Link>
-              </li>
               <li>
                 <Link to="/om-oss" className={LANK}>
                   Om oss
@@ -99,7 +95,7 @@ export function Footer() {
             <span>
               © {new Date().getFullYear()} {FORETAG.namn} · Org.nr {FORETAG.orgnr}
             </span>
-            <span>{FORETAG.omrade}</span>
+            <span>Registrerad för F-skatt och moms</span>
           </div>
         </div>
       </div>
