@@ -1,17 +1,16 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
-@import "@fontsource/michroma/latin-400.css";
-@import "@fontsource/michroma/latin-ext-400.css";
+@import "@fontsource-variable/bodoni-moda/wght.css";
 @import "@fontsource-variable/dm-sans/wght.css";
 
 @custom-variant dark (&:is(.dark *));
 
 /*
  * Designsystem – Jovos Transport AB
- * Varm off-white yta, djup teal som huvudfärg och en mörk pill-knapp. Teal används som ytfärg med
- * vit text (6:1) och som textfärg på ljust. Rubriker i hero: Michroma (bred, versaler).
- * Övriga rubriker och brödtext: DM Sans.
+ * Redaktionell stil: varm grå pappersyta med korn, svart text, enorm högkontrast-serif (Bodoni Moda)
+ * som ordbild och små versala bildtexter. Kobolt (--brand) är enda färgyta/länkfärg; blobben i
+ * hero är dekor. Brödtext: DM Sans. Svart på papper = 17:1, vit på kobolt = 8:1.
  */
 
 @theme inline {
@@ -20,8 +19,7 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 6px);
   --radius-2xl: calc(var(--radius) + 12px);
-  --font-display: "DM Sans Variable", system-ui, sans-serif;
-  --font-wide: "Michroma", "DM Sans Variable", system-ui, sans-serif;
+  --font-display: "Bodoni Moda Variable", "Bodoni 72", Didot, Georgia, serif;
   --font-sans: "DM Sans Variable", system-ui, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -55,33 +53,33 @@
 :root {
   color-scheme: light;
   --radius: 1.5rem;
-  --brand: #0d6e62;
-  --brand-deep: #06403a;
-  --brand-light: #3fc1a8;
-  --ink: #0c1f1c;
-  --sun: #8fe0c9;
-  --cream: #fdf8f4;
-  --background: #fbf8f4;
-  --foreground: #0c1f1c;
-  --card: #ffffff;
-  --card-foreground: #0c1f1c;
-  --popover: #ffffff;
-  --popover-foreground: #0c1f1c;
+  --brand: #2438c9;
+  --brand-deep: #14207f;
+  --brand-light: #6f86ff;
+  --ink: #101114;
+  --sun: #ffd45c;
+  --cream: #f5f4f1;
+  --background: #ebeae6;
+  --foreground: #101114;
+  --card: #f6f5f2;
+  --card-foreground: #101114;
+  --popover: #f6f5f2;
+  --popover-foreground: #101114;
   --primary: var(--brand);
   --primary-foreground: #ffffff;
-  --secondary: #eaf3f0;
-  --secondary-foreground: #0c1f1c;
-  --muted: #eaf3f0;
-  --muted-foreground: #4a5f5a;
+  --secondary: #e2e1dc;
+  --secondary-foreground: #101114;
+  --muted: #e2e1dc;
+  --muted-foreground: #55565c;
   --accent: var(--sun);
-  --accent-foreground: #0c1f1c;
+  --accent-foreground: #101114;
   --destructive: #b42318;
   --destructive-foreground: #ffffff;
-  --border: #d9e6e2;
-  --input: #d9e6e2;
+  --border: #cfcec8;
+  --input: #cfcec8;
   --ring: var(--brand);
-  --tint: #eaf3f0;
-  --line: #d3e2dd;
+  --tint: #e2e1dc;
+  --line: #c6c5be;
 }
 
 @layer base {
@@ -101,15 +99,27 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* Papperskorn över hela sidan – statisk SVG-brus, påverkar inte klick. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .22 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
   h1,
   h2,
   h3,
   h4,
   .font-display {
     font-family: var(--font-display);
-    font-weight: 600;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
     text-wrap: balance;
     overflow-wrap: break-word;
   }
@@ -132,28 +142,34 @@
 }
 
 @utility eyebrow {
-  font-size: 0.78rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--brand);
+  color: var(--ink);
+  &::before {
+    content: "";
+    width: 2rem;
+    height: 1px;
+    background-color: currentColor;
+  }
 }
 
-/* Teal yta med mjuk ljuskälla uppe till vänster. */
-@utility panel-brand {
-  background-color: var(--brand);
-  background-image:
-    radial-gradient(60% 55% at 28% 18%, #3fc1a8 0%, rgb(63 193 168 / 0) 70%),
-    radial-gradient(70% 60% at 85% 95%, #06403a 0%, rgb(6 64 58 / 0) 75%),
-    linear-gradient(160deg, #148a7a 0%, #0d6e62 45%, #08504a 100%);
+/* Mörk yta med kornig blob (slutsektion) */
+@utility panel-ink {
+  background-color: var(--ink);
   color: #ffffff;
 }
 
-/* Bred display-font för hero och logotyp */
-@utility font-wide {
-  font-family: var(--font-wide);
-  font-weight: 400;
-  letter-spacing: 0.02em;
+/* Liten versal bildtext med bred bokstavsavstånd */
+@utility caps {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
 }
 
 /* Ljusblå yta som tonas mjukt in och ut mot vitt – inga hårda kanter mellan sektioner. */
@@ -257,7 +273,7 @@
   &:focus {
     outline: none;
     border-color: var(--brand);
-    box-shadow: 0 0 0 4px rgb(13 110 98 / 0.22);
+    box-shadow: 0 0 0 4px rgb(36 56 201 / 0.22);
   }
   &[aria-invalid="true"] {
     border-color: var(--destructive);

@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { KornFilter } from "@/components/Brand";
 
 function NotFoundComponent() {
   return (
@@ -80,7 +81,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Professionell lokalvård för företag, kontor och fastigheter i Göteborg. Kollektivavtal och verksamma sedan 1995. Få fri offert.",
       },
       { property: "og:site_name", content: "Jovos Transport AB" },
-      { name: "theme-color", content: "#1d5ed8" },
+      { name: "theme-color", content: "#ebeae6" },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "sv_SE" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -130,7 +131,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="bg-white">
+      <body>
         {children}
         <Scripts />
       </body>
@@ -143,6 +144,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <KornFilter />
       <div className="flex min-h-screen flex-col">
         <Header />
         <main id="innehall" className="flex-1 overflow-x-clip">

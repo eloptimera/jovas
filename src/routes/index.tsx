@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, BadgeCheck, Handshake, Phone, Users } from "lucide-react";
-import { GlasCirkel } from "@/components/Brand";
+import { Blob, Linjer } from "@/components/Brand";
 import { Heading, Mark } from "@/components/Heading";
 import { Reveal } from "@/components/Reveal";
 import { FORETAG } from "@/lib/foretag";
@@ -62,54 +62,54 @@ function Start() {
   return (
     <>
       {/* Hero */}
-      <section className="p-3 sm:px-6">
-        <div className="panel-brand relative isolate mx-auto max-w-[88rem] overflow-hidden rounded-[2rem]">
-          <GlasCirkel
-            namn={FORETAG.kortnamn}
-            className="pointer-events-none absolute top-1/2 -right-10 -z-10 hidden w-[42rem] -translate-y-1/2 lg:block"
-          />
-          <div className="px-6 py-16 sm:px-12 sm:py-24 lg:min-h-[min(41rem,calc(100svh-7rem))] lg:px-16 lg:py-28">
-            <p className="inline-flex rounded-full bg-white/15 px-4 py-1.5 text-xs font-bold tracking-[0.14em] uppercase">
+      <section className="relative isolate overflow-hidden">
+        <div className="mx-auto flex max-w-[88rem] flex-col px-6 pt-6 pb-14 sm:px-10 lg:min-h-[min(46rem,calc(100svh-4.5rem))] lg:pb-12">
+          <div className="caps flex items-start justify-between gap-6 text-ink max-sm:justify-end">
+            <span aria-hidden="true" className="hidden sm:inline">
+              Kontor · Fastighet · Lokalvård
+            </span>
+            <span>
               {FORETAG.ort} · sedan {FORETAG.startar}
-            </p>
-            <h1 className="font-wide mt-6 max-w-3xl text-[clamp(1.25rem,4vw,3.4rem)] leading-[1.3] uppercase">
-              Professionell lokalvård
-              <span className="font-display mt-5 block text-[clamp(1.05rem,1.6vw,1.4rem)] leading-snug font-normal tracking-normal text-white/90 normal-case">
-                för företag och fastigheter i {FORETAG.ort}
-              </span>
-            </h1>
-            <p className="mt-8 max-w-xl text-lg leading-relaxed text-white/90">
-              Kontorsstädning, trapphusstädning och lokalvård för företag, fastighetsägare och
-              BRF:er. Skicka en förfrågan så återkommer vi med fri offert.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Link to="/offert" className="btn-base btn-white">
-                Få fri offert
-              </Link>
-              {FORETAG.telefon ? (
-                <a href={`tel:${FORETAG.telefonLank}`} className="btn-base btn-outline-white">
-                  <Phone className="size-4" aria-hidden="true" />
-                  {FORETAG.telefon}
-                </a>
-              ) : (
-                <Link to="/kontakt" className="btn-base btn-outline-white">
-                  Kontakta oss
-                </Link>
-              )}
-            </div>
-            <ul className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium text-white/85">
-              {TRYGGHET.map((t) => (
-                <li key={t} className="flex items-center gap-2">
-                  <span className="size-1.5 rounded-full bg-sun" aria-hidden="true" />
-                  {t}
-                </li>
-              ))}
-            </ul>
+            </span>
+          </div>
 
-            <GlasCirkel
-              namn={FORETAG.kortnamn}
-              className="pointer-events-none relative mx-auto mt-12 w-full max-w-[22rem] lg:hidden"
-            />
+          {/* Ordbild över blob och linjer */}
+          <div className="relative my-10 flex flex-1 items-center justify-center lg:my-4">
+            <Blob className="absolute top-1/2 left-1/2 -z-10 w-[min(72vw,44rem)] -translate-x-[48%] -translate-y-[56%]" />
+            <Linjer className="absolute inset-x-[-1.5rem] top-1/2 -z-10 h-[min(34vw,26rem)] min-h-40 w-[calc(100%+3rem)] -translate-y-1/2 text-ink/80 sm:inset-x-[-2.5rem] sm:w-[calc(100%+5rem)]" />
+            <p
+              aria-hidden="true"
+              className="font-display text-[min(24vw,20rem)] leading-[0.9] font-medium tracking-[-0.02em] text-ink uppercase select-none"
+            >
+              {FORETAG.kortnamn}
+            </p>
+          </div>
+
+          <div className="grid items-end gap-8 lg:grid-cols-[1.25fr_1fr] lg:gap-16">
+            <h1 className="max-w-2xl text-[clamp(1.75rem,3.2vw,2.75rem)] leading-[1.12]">
+              Professionell <Mark>lokalvård</Mark> för företag och fastigheter i {FORETAG.ort}
+            </h1>
+            <div>
+              <p className="max-w-md leading-relaxed text-ink/80">
+                Kontorsstädning, trapphusstädning och lokalvård för företag, fastighetsägare och
+                BRF:er. Skicka en förfrågan så återkommer vi med fri offert.
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                <Link to="/offert" className="btn-base btn-dark">
+                  Få fri offert
+                </Link>
+                {FORETAG.telefon ? (
+                  <a href={`tel:${FORETAG.telefonLank}`} className="btn-base btn-outline">
+                    <Phone className="size-4" aria-hidden="true" />
+                    {FORETAG.telefon}
+                  </a>
+                ) : (
+                  <Link to="/kontakt" className="btn-base btn-outline">
+                    Kontakta oss
+                  </Link>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -213,14 +213,12 @@ function Start() {
       </section>
 
       {/* Avslutande CTA */}
-      <section className="p-3 pt-0 sm:px-6">
+      <section className="px-3 pb-3 sm:px-6">
         <Reveal>
-          <div className="panel-brand relative isolate mx-auto max-w-[88rem] overflow-hidden rounded-[2rem] px-6 py-16 sm:px-14 sm:py-24">
-            <GlasCirkel
-              namn={FORETAG.kortnamn}
-              className="pointer-events-none absolute top-1/2 -right-4 -z-10 hidden w-[28rem] -translate-y-1/2 opacity-80 lg:block"
-            />
-            <h2 className="font-wide max-w-2xl text-[clamp(1.5rem,3.4vw,2.8rem)] leading-[1.3] uppercase">
+          <div className="panel-ink relative isolate mx-auto max-w-[88rem] overflow-hidden rounded-[2rem] px-6 py-16 sm:px-14 sm:py-24">
+            <Blob className="absolute top-1/2 -right-24 -z-10 hidden w-[34rem] -translate-y-1/2 lg:block" />
+            <p className="caps text-white/70">Kontakt</p>
+            <h2 className="mt-5 max-w-2xl text-[clamp(2.2rem,5vw,4.25rem)] leading-[1.05]">
               Redo för <Mark>rena</Mark> lokaler?
             </h2>
             <div className="mt-9 flex flex-wrap gap-3">

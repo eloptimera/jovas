@@ -12,8 +12,8 @@ const LANKAR = [
 ] as const;
 
 const LANK =
-  "rounded-full px-4 py-2.5 text-sm font-medium whitespace-nowrap text-ink/75 transition-colors duration-200 hover:text-ink";
-const LANK_AKTIV = "text-ink underline decoration-brand decoration-2 underline-offset-8";
+  "caps px-4 py-3 !tracking-[0.16em] whitespace-nowrap text-ink/70 transition-colors duration-200 hover:text-ink";
+const LANK_AKTIV = "text-ink underline decoration-ink decoration-1 underline-offset-[10px]";
 
 function Lank({ to, label, onClick }: { to: string; label: string; onClick?: () => void }) {
   return (
@@ -40,7 +40,7 @@ export function Header() {
   }, [oppen]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line/70 bg-background/85 backdrop-blur-md">
+    <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md">
       <a
         href="#innehall"
         className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-4 focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:font-bold focus:text-ink"
@@ -56,7 +56,7 @@ export function Header() {
           {LANKAR.map((l) => (
             <Lank key={l.to} {...l} />
           ))}
-          <Link to="/offert" className="btn-base btn-dark ml-3 min-h-11 px-6 py-2 text-sm">
+          <Link to="/offert" className="btn-base btn-dark ml-4 min-h-11 px-6 py-2 text-sm">
             Få fri offert
           </Link>
         </nav>

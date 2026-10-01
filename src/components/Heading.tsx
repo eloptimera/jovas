@@ -1,6 +1,5 @@
 import type { ElementType, ReactNode } from "react";
-import { GlasCirkel } from "@/components/Brand";
-import { FORETAG } from "@/lib/foretag";
+import { Blob } from "@/components/Brand";
 
 export function Heading({
   as: Tag = "h2",
@@ -18,7 +17,7 @@ export function Heading({
 export function Mark({ children, nowrap = false }: { children: ReactNode; nowrap?: boolean }) {
   return (
     <span
-      className={`underline decoration-sun decoration-[0.09em] underline-offset-[0.12em] [text-decoration-skip-ink:none] ${
+      className={`italic underline decoration-sun decoration-[0.07em] underline-offset-[0.1em] [text-decoration-skip-ink:none] ${
         nowrap ? "whitespace-nowrap" : ""
       }`}
     >
@@ -27,7 +26,7 @@ export function Mark({ children, nowrap = false }: { children: ReactNode; nowrap
   );
 }
 
-/** Sidhuvud för undersidor: teal panel med glasig cirkel. */
+/** Sidhuvud för undersidor: pappersyta, serif-rubrik, kornig blob och tunna linjer. */
 export function PageHero({
   eyebrow,
   title,
@@ -40,22 +39,21 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="p-3 sm:px-6">
-      <div className="panel-brand relative isolate mx-auto max-w-[88rem] overflow-hidden rounded-[2rem]">
-        <GlasCirkel
-          namn={FORETAG.kortnamn}
-          className="pointer-events-none absolute top-1/2 -right-6 -z-10 hidden w-[32rem] -translate-y-1/2 opacity-80 lg:block"
-        />
-        <div className="px-6 py-16 sm:px-12 sm:py-24 lg:px-16">
-          <p className="inline-flex rounded-full bg-white/15 px-4 py-1.5 text-xs font-bold tracking-[0.14em] uppercase">
-            {eyebrow}
-          </p>
-          <h1 className="font-wide mt-6 max-w-3xl text-[clamp(1.5rem,3.6vw,3rem)] leading-[1.3] uppercase">
-            {title}
-          </h1>
-          {intro && <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/90">{intro}</p>}
-          {children && <div className="mt-8 flex flex-wrap gap-3">{children}</div>}
-        </div>
+    <section className="relative isolate overflow-hidden">
+      <Blob className="absolute top-1/2 -right-16 -z-10 hidden w-[36rem] -translate-y-1/2 opacity-90 lg:block" />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute top-1/2 right-[5%] -z-10 hidden aspect-square w-[30rem] -translate-y-1/2 rounded-full border border-ink/70 lg:block"
+      />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 border-b border-ink/70"
+      />
+      <div className="mx-auto max-w-[88rem] px-6 py-16 sm:px-10 sm:py-24 lg:py-28">
+        <p className="eyebrow">{eyebrow}</p>
+        <h1 className="mt-6 max-w-3xl text-[clamp(2.5rem,6.4vw,5.5rem)] leading-[1.02]">{title}</h1>
+        {intro && <p className="mt-7 max-w-xl text-lg leading-relaxed text-ink/80">{intro}</p>}
+        {children && <div className="mt-9 flex flex-wrap gap-3">{children}</div>}
       </div>
     </section>
   );

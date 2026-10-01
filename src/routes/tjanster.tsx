@@ -33,10 +33,10 @@ function Tjanster() {
         }
         intro="Kontorsstädning, trapphusstädning och lokalvård för företag, fastighetsägare och BRF:er i Göteborg."
       >
-        <Link to="/offert" className="btn-base btn-white">
+        <Link to="/offert" className="btn-base btn-dark">
           Få fri offert
         </Link>
-        <Link to="/kontakt" className="btn-base btn-outline-white">
+        <Link to="/kontakt" className="btn-base btn-outline">
           Kontakta oss
         </Link>
       </PageHero>
